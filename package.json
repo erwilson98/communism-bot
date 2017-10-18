@@ -1,0 +1,25 @@
+{
+  "name": "real-bot",
+  "version": "1.0.0",
+  "description": "nodejs twitter bot made for lmc2700",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n/A.git"
+  },
+  "keywords": [
+    "banana"
+  ],
+  "author": "Ethan Wilson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n/A/issues"
+  },
+  "homepage": "https://github.com/n/A#readme",
+  "dependencies": {
+    "twitter": "^1.7.1"
+  }
+}
