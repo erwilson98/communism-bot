@@ -338,7 +338,7 @@ revolutionary combination, due to association. The development of Modern Industr
 cuts from under its feet the very foundation on which the bourgeoisie produces and appropriates
 products. What the bourgeoisie therefore produces, above all, are its own grave-diggers. Its fall
 and the victory of the proletariat are equally inevitable. `;
-manifesto = manifesto.replace(/(\r\n|\n|\r)/gm, '');
+manifesto = manifesto.replace(/(\r\n|\n|\r)/gm, ' ');
 
 stream.on('follow', followed);
 stream.on('unfollow', unfollowed);
