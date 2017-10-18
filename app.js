@@ -350,6 +350,18 @@ runBot();
 //run it every 30 minutes
 setInterval(runBot, 1000 * 60 * 60);
 
+var params = {
+    q: ['#communism', '#communist', '#manifesto', '#marx', '#marxism',
+        '#communistmanifesto', '#russia'],
+    count: 1,
+    result_type: 'recent',
+    lang: 'en'
+}
+//try to find something to favorite
+findFav(params);
+//do this once a minute so the host doesn't time out
+setInterval(findFav, 1000* 60);
+
 function runBot() {
     var len = Math.floor(Math.random() * manifesto.length - 140);
     var sub = manifesto.substring(len, len + 139);
@@ -382,27 +394,27 @@ function runBot() {
 //     });
 // }
 
-// function findFav(params) {
-//     bot.get('search/tweets', params, function(err, data, response) {
-//         if (!err) {
-//             //loop through the tweets we found
-//             for(let i = 0; i < data.statuses.length; i++) {
-//                 //get their id tag
-//                 let id = {id: data.statuses[i].id_str}
-//                 bot.post('favorites/create', id, function(err, response) {
-//                     if (!err) {
-//                         let username = response.user.screen_name;
-//                         let tweetId = response.id_str;
-//                         console.log('Favorited tweet from ' + username + 'at ID ' + tweetId);
-//                         reply('@' + username + ' I follow back...', username);
-//                     } else {
-//                         console.log(err[0].message);
-//                     }
-//                 });
-//             }
-//         }
-//     });
-// }
+ function findFav(params) {
+     bot.get('search/tweets', params, function(err, data, response) {
+         if (!err) {
+             //loop through the tweets we found
+             for(let i = 0; i < data.statuses.length; i++) {
+                 //get their id tag
+                 let id = {id: data.statuses[i].id_str}
+                 bot.post('favorites/create', id, function(err, response) {
+                     if (!err) {
+                         let username = response.user.screen_name;
+                         let tweetId = response.id_str;
+                         console.log('Favorited tweet from ' + username + 'at ID ' + tweetId);
+                         reply('@' + username + ' I follow back...', username);
+                     } else {
+                         console.log(err[0].message);
+                     }
+                 });
+             }
+         }
+     });
+ }
 
 function followed(event) {
     console.log('Someone followed the bot! Follow Event is running');
